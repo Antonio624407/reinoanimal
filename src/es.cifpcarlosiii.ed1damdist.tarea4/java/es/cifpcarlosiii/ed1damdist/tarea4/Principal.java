@@ -1,57 +1,62 @@
 package es.cifpcarlosiii.ed1damdist.tarea4;
 
-public class Principal {
+        /**
+         * Clase principal del programa.
+         * Se encarga de ejecutar el programa y probar las clases del reino animal.
+         */
+        public class Principal {
+            /*
+                    Esquema de clases de reino-animal
+                                      Animal
+                                        |
+                                        |
+                                    Mamifero
+                                    /       \
+                                   /         \
+                              Perro          Gato
+                   package es.cifpcarlosiii.ed1damdist.tarea4;
+                        /**
+                         * Método principal donde comienza la ejecución del programa.
+                         * @param args argumentos de línea de comandos
+                         */
+            public static void main(String[] args) {
 
-    public static void main(String[] args) {
+                Animal animal = new Animal("Luffy");
 
-        /*
-        Esquema de clases de reino-animal
-                          Animal
-                            |
-                            |
-                        Mamifero
-                        /       \
-                       /         \
-                  Perro          Gato
-        */
+                Mamifero mamifero = new Mamifero("Zoro");
 
-        Animal animal = new Animal("Luffy");
+                Perro toby = new Perro("Toby");
 
-        Mamifero mamifero = new Mamifero("Zoro");
+                Gato isidoro = new Gato("Isidoro");
+                isidoro.setPelos(4);
 
-        Perro toby = new Perro("Toby");
+                animal = isidoro;
 
-        Gato isidoro = new Gato("Isidoro");
-        isidoro.setPelos(4);
+                Gato g;
+                g = (Gato) animal;
+                System.out.println("pelos de gato: " + g.getPelos());
 
-        animal = isidoro;
+                Animal array[] = new Animal[4];
 
-        Gato g;
-        g = (Gato) animal;
-        System.out.println("pelos de gato: " + g.getPelos());
+                array[0] = animal;
+                array[1] = mamifero;
+                array[2] = toby;
+                array[3] = isidoro;
 
-        Animal array[] = new Animal[4];
+                for (int i = 0; i < array.length; i++) {
+                    if (array[i] instanceof Perro) {
+                        System.out.println("El objeto " + i + " es un perro");
 
-        array[0] = animal;
-        array[1] = mamifero;
-        array[2] = toby;
-        array[3] = isidoro;
+                        Perro p = (Perro) array[i];
+                        p.ladrar();
+                    }
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] instanceof Perro) {
-                System.out.println("El objeto " + i + " es un perro");
+                    if (array[i] instanceof Gato) {
+                        System.out.println("El objeto " + i + " es un gato");
 
-                Perro p = (Perro) array[i];
-                p.ladrar();
-            }
-
-            if (array[i] instanceof Gato) {
-                System.out.println("El objeto " + i + " es un gato");
-
-                Gato anigato = (Gato) array[i];
-                anigato.maullar();
+                        Gato anigato = (Gato) array[i];
+                        anigato.maullar();
+                    }
+                }
             }
         }
-
-    }
-}
